@@ -1,0 +1,159 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup,menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;} body {line-height: 1;} ol, ul {list-style: none;} blockquote, q {quotes: none;} blockquote:before, blockquote:after, q:before, q:after {content: '';  content: none;} table {border-collapse: collapse;  border-spacing: 0;}
+button, input[type="submit"], input[type="reset"] { background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer;}
+/*Reset CSS (remove user-agent style)*/
+
+
+@font-face {font-family: Light;  src: url(./fonts/Ubuntu-Light.ttf);}
+@font-face {font-family: Regular;  src: url(./fonts/Ubuntu-Regular.ttf);}
+@font-face {font-family: Bold;  src: url(./fonts/Ubuntu-Bold.ttf);}
+
+
+html {
+    --BackColor1: #1e2340;
+    --BackColor2: #5e5ba6;
+    --TextColor1: #FFFFFF;
+    --TextColor2: #b4baff;
+    height: 100%;
+    font-family: Regular;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Bold;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--BackColor1);
+    color: var(--TextColor1);
+}
+
+header {
+    height: 4em;
+    width: 100%;
+    color: var(--TextColor2);
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+}
+.logo h1 {font-size: 2em;}
+span.red {color: #fe0000;}
+span.orange {color: #fe9900;}
+span.yellow {color: #ffff00;}
+span.green {color: #33cc33;}
+span.blue {color: #0099ff;}
+span.violet {color: #9933ff;}
+.logo img {
+    height: 3em;
+    width: 3em;
+}
+.credits {
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.credits a {color: var(--TextColor2);}
+.credits.active {display: none;}
+.creditsPhone {
+    display: none;
+    align-items: center;
+    padding: 0.5em;
+    font-size: 1em;
+}
+.creditsPhone a {color: var(--TextColor2);}
+.creditsPhone.active {display: flex;}
+
+
+.subheader{
+    width: auto;
+    text-align: center;
+    padding: 2em;
+}
+.subheader h1 {
+    color: #FEE2D6;
+    padding: 1em;
+    border-left: 6px red solid;
+    background-color: rgba(220, 38, 38, 0.761);
+    border-radius: 3px;
+    width:fit-content;
+}
+
+
+#content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+#uploadDiv, #options {
+    padding: 1.5em;
+    border-radius: 1.5em;
+    border: var(--BackColor2) 1px solid;
+}
+.inputDiv {
+    background-color: var(--BackColor2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 16em;
+    width: 16em;
+    border-radius: 1em;
+}
+.inputDiv.loaded {
+    background: none;
+}
+.inputDiv h1 {
+    position: absolute;
+    font-size: 2em;
+}
+.inputDiv h1 span {
+    font-size: 0.5em;
+}
+.inputDiv.loaded h1{
+    display: none;
+}
+.file {
+    width: 20em;
+    height: 20em;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+#canvas {
+    height: 16em;
+    width: 16em;
+    /*border-radius: 1em;*/
+    border: var(--BackColor2) 1px solid;
+
+}
+#options {
+    display: none;
+}
+#options.active {
+    display: block;
+}
+#options div {
+    border: var(--BackColor2) 1px solid;
+    padding: 2em;
+    border-radius: 1em;
+    text-align: center;
+}
+#options input[type="number"] {
+    width: 4em;
+}
+#borderSize {
+    display: none;
+}
+#borderSize.active {
+    display: block;
+}

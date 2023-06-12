@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LGBTfy pfp</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img class="logo" src="./src/logo.png" alt="">
+            <h1><span class="red">L</span><span class="orange">G</span><span class="yellow">B</span><span class="green">T</span><span class="blue">f</span><span class="violet">y</span> pfp</h1>
+        </div>
+        <div class="credits">
+            <p>By <a href="https://robin888b.github.io/">Raven Spart (Robin888b)</a></p>
+        </div>
+        <div class="creditsPhone">
+            <p>By <a href="https://robin888b.github.io/">Raven Spart</a></p>
+        </div>
+    </header>
+    <div class="subheader">
+        <h1>website in creation, most functionalities not yet developed</h1>
+    </div>
+    <div id="content">
+        <div id="uploadDiv">
+            <h1>Chose a picture</h1><br>
+            <div class="inputDiv">
+                <canvas id="canvas" height="1000" width="1000">votre navigateur ne supporte pas canvas</canvas>
+                <h1>Drop file here<br><span>Or click to open file</span></h1>
+                <input type="file" class="file" name="" id="">
+            </div>
+        </div>
+        <div id="options">
+            <h1>Chose options</h1><br>
+            <div>
+                <p>
+                    Flag :
+                    <select name="" id="flagSelect">
+                        <option value="-1" selected></option>
+                        <option value="0">Raimbow</option>
+                        <option value="1">HomoSexual</option>
+                        <option value="2">lesbian</option>
+                        <option value="3">Bisexual</option>
+                        <option value="4">Pansexual</option>
+                        <option value="5">Asexual</option>
+                        <option value="6">Transgender</option>
+                        <option value="7">DemiBoy</option>
+                        <option value="8">DemiGirl</option>
+                        <option value="9">NonBinary</option>
+                    </select><br><br>
+                    mode :
+                    <select name="" id="flagModaSelect">
+                        <option value="-1" selected></option>
+                        <option value="0">circle</option>
+                        <option value="1">square</option>
+                        <option value="2">gradient</option>
+                        <option value="3">Dash</option>
+                    </select><br><br>
+                    Rotation :
+                    <input type="range" min="0" value="0" max="45" id="rotationRange">
+                    <input type="number" min="0" value="0" max="45" id="rotationInput">
+                    <br><br>
+                    <br><br>
+                    Image size :
+                    <input type="range" min="100" value="1000" max="2500" id="sizeRange">
+                    <input type="number" min="100" value="1000" max="2500" id="sizeInput">
+                    <br><br>
+                    Clip mode :
+                    <select id="clipModeSelect">
+                        <option value="0" selected>Transparency</option>
+                        <option value="1">Circle</option>
+                        <option value="2">square</option>
+                        <option value="3">heart</option>
+                    </select>
+                    <p id="borderSize">
+                        <br>
+                        Border size (%) :
+                        <input type="range" min="0" value="0" max="25"  id="borderSizeRange">
+                        <input type="number" min="0"  value="0" max="25" id="borderSizeInput">
+                    </p>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./src/img/svg/flagList.js"></script>
+<script src="./src/app.js"></script>
+</html>
