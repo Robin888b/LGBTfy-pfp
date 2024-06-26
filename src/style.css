@@ -92,8 +92,17 @@ span.violet {color: #9933ff;}
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
+
+#subcontent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5svw;
+}
+
 #uploadDiv, #options {
     padding: 1.5em;
     border-radius: 1.5em;
@@ -132,7 +141,7 @@ span.violet {color: #9933ff;}
 #canvas {
     height: 16em;
     width: 16em;
-    /*border-radius: 1em;*/
+    border-radius: 1em;
     border: var(--BackColor2) 1px solid;
 
 }

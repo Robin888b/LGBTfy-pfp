@@ -2,14 +2,15 @@ const img = new Image();
 const flagSvg = new Image();
 const clipCircle = new Image();clipCircle.src = "../src/img/svg/clipShape-circle.svg";
 let file
-let flag
+let flag = 0
 let imageLoaded
-let flagLoaded
+let flagLoaded = true;
 let canvasSize = 1000
 let border
 let overlay = new Image()
+flagSvg.src = flagList[0][0]
 
-async function openFileDialog() {
+async function openFileDialog() { // Select File
     let [filehandle] = await showOpenFilePicker()
     let fileData = await filehandle.getFile()
     console.log(filehandle)
@@ -17,7 +18,7 @@ async function openFileDialog() {
     file = fileData
 }
 
-const input = document.querySelector(".inputDiv input")
+const input = document.querySelector(".inputDiv input") // Drop File
 input.addEventListener("drop", (event)=> {
     event.preventDefault()
     const file_ = event.dataTransfer.files[0]
@@ -32,6 +33,8 @@ input.addEventListener("change", (event)=> {
     img.onload = () => {load()}
 })
 
+
+// all inputs
 const flagSelect = document.getElementById("flagSelect")
 const rotationInput = document.getElementById("rotationInput")
 const rotationRange = document.getElementById("rotationRange")
@@ -41,40 +44,35 @@ const clipModeSelect = document.getElementById("clipModeSelect")
 const borderSizeRange = document.getElementById("borderSizeRange")
 const borderSizeInput = document.getElementById("borderSizeInput")
 
-rotationInput.addEventListener("change", ()=> {rotationRange.value = rotationInput.value;load()})
-rotationRange.addEventListener("change", ()=> {rotationInput.value = rotationRange.value;load()})
-sizeInput.addEventListener("change", ()=> {
+rotationInput.addEventListener("input", ()=> {rotationRange.value = rotationInput.value;load()})
+rotationRange.addEventListener("input", ()=> {rotationInput.value = rotationRange.value;load()})
+sizeInput.addEventListener("input", ()=> {
     sizeRange.value = sizeInput.value
     canvasSize = sizeInput.value
     canvas.height = sizeInput.value
     canvas.width = sizeInput.value
     load()
 })
-sizeRange.addEventListener("change", ()=> {
+sizeRange.addEventListener("input", ()=> { // TAILLE
     sizeInput.value = sizeRange.value
     canvasSize = sizeRange.value
     canvas.height = sizeRange.value
     canvas.width = sizeRange.value
     load()
 })
-borderSizeInput.addEventListener("change", ()=> {
-    borderSizeRange.value = borderSizeInput.value
-    load()
+borderSizeInput.addEventListener("input", ()=> {// Border size
+    borderSizeRange.value = borderSizeInput.value; load()
 })
-borderSizeRange.addEventListener("change", ()=> {
-    borderSizeInput.value = borderSizeRange.value
-    load()
+borderSizeRange.addEventListener("input", ()=> {
+    borderSizeInput.value = borderSizeRange.value; load()
 })
-clipModeSelect.addEventListener("change", ()=> {
+clipModeSelect.addEventListener("input", ()=> {// clip mode
     if (clipModeSelect.value == 0) {
-        document.getElementById("borderSize").classList.remove("active")
-        load()
+        document.getElementById("borderSize").classList.remove("active"); load()
     } else {
-        document.getElementById("borderSize").classList.add("active")
-        load()
-    }
+        document.getElementById("borderSize").classList.add("active"); load()}
 })
-flagSelect.addEventListener("change", ()=> {
+flagSelect.addEventListener("input", ()=> { // FLAG
     flagLoaded = false
     if (flagSelect.value != -1){
         flag = flagSelect.value
@@ -86,17 +84,12 @@ flagSelect.addEventListener("change", ()=> {
 
 function Rotation(){
     let canvasD = Math.sqrt((canvasSize*canvasSize) + (canvasSize*canvasSize))
-    let cavasDif = canvasSize - canvasD
-    if(1* rotationInput.value /1 > 0 && 1* rotationInput.value /1 <91) {
+    let canvasDif = canvasSize - canvasD
+    if(1* rotationInput.value /1 > 0 && 1* rotationInput.value /1 <46) {
 
-        let tj
-        if (1* rotationInput.value /1 < 46){
-            tj = Math.cos((45 - rotationInput.value) * Math.PI / 180) * canvasD
-        }else {
-            tj = Math.cos((rotationInput.value - 45) * Math.PI / 180) * canvasD
-        }
+        let tj = Math.cos((45 - rotationInput.value) * Math.PI / 180) * canvasD
+
         ctx.drawImage(flagSvg, 0, 0, canvasSize, canvasSize)
-        ctx.globalCompositeOperation = 'source-atop'
         ctx.rotate((1* rotationInput.value * Math.PI) / 180);
         ctx.drawImage(flagSvg, 0, -rotationInput.value * Math.sqrt((canvasSize*canvasSize/2))/45, tj, tj)
         ctx.rotate(-(1* rotationInput.value * Math.PI / 180))
@@ -106,8 +99,13 @@ function Rotation(){
         //-rotationInput.value * Math.sqrt(500000)/45
         // Math.abs(0 - Math.sin(45 - rotationInput.value) * canvasSize)
 
-    } else if (1* rotationInput.value /1 < 1){
+    } else if (1* rotationInput.value /1 < 0 && 1* rotationInput.value /1 > -46){
+        let tj = canvasSize - ((-rotationInput.value) * canvasDif / 45)
         ctx.drawImage(flagSvg, 0, 0, canvasSize, canvasSize)
+        ctx.rotate((1* rotationInput.value * Math.PI) / 180);
+        ctx.drawImage(flagSvg, -(rotationInput.value*(canvasD/2)/-45), 0, tj*1.2, tj)
+        ctx.rotate(-(1* rotationInput.value * Math.PI) / 180);
+
     } else {
         ctx.drawImage(flagSvg, 0, 0, canvasSize, canvasSize)
     }
@@ -118,32 +116,29 @@ function load() {
     let canvasD = Math.sqrt((canvasSize*canvasSize) + (canvasSize*canvasSize))
     let cavasDif = canvasSize - canvasD
 
-    border = canvasSize * borderSizeInput.value /100
+    border = canvasSize * borderSizeInput.value /100 ;
     ctx.fillStyle = "#fff"
 
 
 
-    if (flagLoaded == true) {
+    ctx.globalCompositeOperation = 'source-over'
+
+    if(1* clipModeSelect.value /1 == 1){ /* CLIP MODE   CLIP MODE   CLIP MODE */
+        Rotation() 
+        ctx.globalCompositeOperation = 'destination-out'
+
+        ctx.beginPath()
+        ctx.arc(canvasSize/2, canvasSize/2, canvasSize/2-border, 0 , Math.PI*2)
+        ctx.fill()
+
+
+        overlay.src = canvas.toDataURL("image/png")
         ctx.globalCompositeOperation = 'source-over'
-
-        if(1* clipModeSelect.value /1 == 1){ /* CLIP MODE   CLIP MODE   CLIP MODE */
-            ctx.beginPath()
-            ctx.arc(canvasSize/2, canvasSize/2, canvasSize/2-border, 0 , Math.PI*2)
-            ctx.fill()
-            ctx.globalCompositeOperation = 'source-out'
-
-            Rotation()
-
-            overlay.src = canvas.toDataURL("image/png")
-            ctx.globalCompositeOperation = 'source-over'
-            Rotation()
-        }else if(1* clipModeSelect.value /1 == 2) {
-            Rotation()
-        }else {
-            Rotation()
-        }
-        
-    } else {
+        Rotation()
+    }else if(1* clipModeSelect.value /1 == 2) {
+        Rotation()
+    }else {
+        Rotation()
     }
 
 
@@ -179,7 +174,7 @@ function load() {
                 canvasSize/2-(img.width*(canvasSize-(border*2))/img.height)/2, /* bordure gauche-droite */
                 border, /* bordure haut-bas (border*%) */
                 img.width*(canvasSize-(border*2))/img.height, /* taille img horizontal */
-                (canvasSize-(border*canvasSize/100*2))); /* taille img vertical */
+                (canvasSize-(border*2))); /* taille img vertical */
         }else{
             ctx.drawImage(img, border, border, (canvasSize-(border*2)), (canvasSize-(border*2)));
         }
