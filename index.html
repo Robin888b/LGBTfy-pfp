@@ -135,7 +135,27 @@
         </div>
     </section>
 
-</body>
-<script src="./src/app.js"></script>
 
+    <section id="cropSection" class="dpNone">
+
+        <div id="cropWindows">
+            <div id="cropCanvasDiv">
+                <canvas id="cropCanvas"></canvas>
+            </div>
+            <div>
+                <span>
+                    Zoom
+                </span>
+                <input type="range" name="cropZoomRange" id="cropZoomRange" min="1" max="100" value="0">
+                <input type="number" name="cropZoomInput" id="cropZoomInput" min="1" max="100" value="0">
+            </div>
+            <div id="cropValidateDiv">
+                <button id="cropValidate">Validate</button>
+            </div>
+        </div>
+
+    </section>
+</body>
+<script src="/src/app.js"></script>
+<script src="/src/crop.js"></script>
 </html>

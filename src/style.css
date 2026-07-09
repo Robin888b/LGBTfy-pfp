@@ -279,8 +279,70 @@ input:hover{
 
 
 
+#cropSection {
+    background-color: var(--BackColor1op7);
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+#cropWindows {
+    padding: 2em;
+    border-radius: .5em;
+    background-color: var(--BackColor2);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+#cropWindows div {
+    display: flex;
+    gap: 1em;
+}
+#cropZoomRange {
+    flex-grow: 2;
+}
+#cropCanvas {
+    background-color: var(--BackColor1);
+    aspect-ratio: 1;
+    min-width: 60svw;
+    border-radius: .3em;
+    cursor: move;
+}
+#cropValidate {
+    background-color: var(--BackColor1op7);
+    padding: .5em;
+    border-radius: .3em;
+    -webkit-transition: .2s;
+    transition: background-color .2s;
+    color: var(--TextColor1);
+}
+#cropValidate:hover {
+    background-color: var(--BackColor1);
+}
+#cropValidateDiv {
+    flex-direction: row-reverse;
+}
+#cropCanvasDIv {
+
+    align-items: center;
+    justify-content: center;
+}
+
+
 @media screen and (min-width: 100vmax) {
     .wideOnly {
         display: initial;
+    }
+
+    #cropCanvas{
+        min-width:0;
+        max-width: none;
+        min-height: calc(70svh - 20em);
+        max-height: calc(100svh - 20em);
     }
 }

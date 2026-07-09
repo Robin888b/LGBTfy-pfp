@@ -28,13 +28,19 @@ fileInput.addEventListener("drop", (event)=> {
     const file_ = event.dataTransfer.files[0]
     img.src = URL.createObjectURL(file_);
     file = URL.createObjectURL(file_)
-    img.onload = () => {firstLoad()}
+    img.onload = () => {
+        cropLoad()
+        //firstLoad()
+    }
 })
 fileInput.addEventListener("change", (event)=> {
     const file_ = fileInput.files[0]
     img.src = URL.createObjectURL(file_);
     file = URL.createObjectURL(file_)
-    img.onload = () => {firstLoad()}
+    img.onload = () => {
+        cropLoad()
+        //firstLoad()
+    }
 })
 
 
@@ -62,6 +68,10 @@ const inputBorderRadius = document.getElementById("borderRadiusInput"); let bord
 const rangeBorderRadius = document.getElementById("borderRadiusRange");
 const divBorderRadius = document.getElementById("brderRadiusControl");
 const divSquare = document.getElementById("square");
+
+const cropSection = document.getElementById("cropSection")
+
+
 if (selectShape.value == 0){
     divBorderRadius.classList.add("dpNone");
     divBorderSize.classList.add("dpNone");
