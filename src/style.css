@@ -1,168 +1,286 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup,menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;} body {line-height: 1;} ol, ul {list-style: none;} blockquote, q {quotes: none;} blockquote:before, blockquote:after, q:before, q:after {content: '';  content: none;} table {border-collapse: collapse;  border-spacing: 0;}
-button, input[type="submit"], input[type="reset"] { background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer;}
-/*Reset CSS (remove user-agent style)*/
-
-
-@font-face {font-family: Light;  src: url(./fonts/Ubuntu-Light.ttf);}
-@font-face {font-family: Regular;  src: url(./fonts/Ubuntu-Regular.ttf);}
-@font-face {font-family: Bold;  src: url(./fonts/Ubuntu-Bold.ttf);}
-
-
-html {
-    --BackColor1: #1e2340;
-    --BackColor2: #5e5ba6;
-    --TextColor1: #FFFFFF;
-    --TextColor2: #b4baff;
-    height: 100%;
-    font-family: Regular;
+/*CSS RESET FROM https://github.com/Lazzzer00/Best-CSS-Reset-2024 */
+*, *::before, *::after{box-sizing: border-box;}
+*{margin: 0; padding: 0;}
+ul[role='list'], ol[role='list']{list-style: none;}
+html:focus-within{scroll-behavior: smooth; }
+a:not([class]){text-decoration-skip-ink: auto;}
+img, picture, svg, video, canvas{max-width: 100%;height: auto; vertical-align: middle; font-style: italic; background-repeat: no-repeat; background-size: cover;}
+input, button, textarea, select{font: inherit;}
+@media (prefers-reduced-motion: reduce){
+    html:focus-within {scroll-behavior: auto;}
+    *, *::before, *::after {animation-duration: 0.01ms !important;animation-iteration-count: 1 !important;transition-duration: 0.01ms !important;scroll-behavior: auto !important;transition: none;}
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: Bold;
+body, html{ height: 100%; width: 100%; top: 0; }
+
+
+
+:root {
+    --BackColor1: #1e2340;
+    --BackColor1op7: #1e2340B2;
+    --BackColor2: #5e5ba6;
+    --BackColor2op7: #5e5ba6B2;
+    --TextColor1: #FFFFFF;
+    --TextColor1op7: #FFFFFFB2;
+    --TextColor2: #b4baff;
+    --TextColor2op7: #b4baffB2;
+    --spoilerGradient: #5e5ba6 #727199;
+    --spoilerGradientop7: #5e5ba6B2 #727199B2;
+    --GayGradient: linear-gradient(135deg, 
+        hsl(0, 100%, 55%)0%,
+        hsl(36, 100%,55%)26%,
+        hsl(60, 100%, 55%)42%,
+        hsl(120, 70%, 55%)58%,
+        hsl(204, 100%, 55%)74%,
+        hsl(270, 100%, 60%) 100%
+    );
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     background-color: var(--BackColor1);
     color: var(--TextColor1);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
+h1 {font-size: 2.3em;padding-bottom: .2em;}
+p{font-size: 1.2em;}
+a{color: var(--TextColor2);font-style: none;text-decoration: none;}
+a:hover {text-decoration: underline;}
+button{background: transparent; border: none; color: var(--TextColor2);}
+select{background-color: transparent;padding: .1em ;border-radius: .2em;color: var(--TextColor2);}
+option{background-color: var(--BackColor2);color: var(--TextColor1);}
+.wideOnly{display: none;}
+.red{color: hsl(0, 100%, 55%);}
+.orange{color:hsl(36, 100%, 55%)}
+.yellow{color: hsl(60, 100%, 55%);}
+.green {color: hsl(120, 70%, 55%);}
+.blue{color: hsl(204, 100%, 55%);}
+.violet {color: hsl(270, 100%, 60%);}
+
 header {
-    height: 4em;
     width: 100%;
-    color: var(--TextColor2);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: .5em .8em;
 }
+
 .logo {
     display: flex;
     align-items: center;
-    padding: 0.5em;
-}
-.logo h1 {font-size: 2em;}
-span.red {color: #fe0000;}
-span.orange {color: #fe9900;}
-span.yellow {color: #ffff00;}
-span.green {color: #33cc33;}
-span.blue {color: #0099ff;}
-span.violet {color: #9933ff;}
-.logo img {
-    height: 3em;
-    width: 3em;
-}
-.credits {
-    display: flex;
-    align-items: center;
-    padding: 0.5em;
-    font-size: 1.5em;
-}
-.credits a {color: var(--TextColor2);}
-.credits.active {display: none;}
-.creditsPhone {
-    display: none;
-    align-items: center;
-    padding: 0.5em;
-    font-size: 1em;
-}
-.creditsPhone a {color: var(--TextColor2);}
-.creditsPhone.active {display: flex;}
-
-
-.subheader{
-    width: auto;
-    text-align: center;
-    padding: 2em;
-}
-.subheader h1 {
-    color: #FEE2D6;
-    padding: 1em;
-    border-left: 6px red solid;
-    background-color: rgba(220, 38, 38, 0.761);
-    border-radius: 3px;
-    width:fit-content;
 }
 
-
-#content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
-#subcontent {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 5svw;
-}
-
-#uploadDiv, #options {
-    padding: 1.5em;
-    border-radius: 1.5em;
-    border: var(--BackColor2) 1px solid;
-}
-.inputDiv {
-    background-color: var(--BackColor2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 16em;
-    width: 16em;
-    border-radius: 1em;
-}
-.inputDiv.loaded {
-    background: none;
-}
-.inputDiv h1 {
-    position: absolute;
+.logo h1 {
     font-size: 2em;
+    padding: 0;
 }
-.inputDiv h1 span {
-    font-size: 0.5em;
+#logoImg {
+    height: 2em;
+    margin-right: .5em;
 }
-.inputDiv.loaded h1{
-    display: none;
+
+.dpNone{
+    display: none!important;
 }
-.file {
+
+
+/* -------- PAGE -------- PAGE -------- PAGE -------- */
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    flex-grow: 2;
+    gap: 2em;
+}
+
+
+
+/* -------- SQUARE -------- SQUARE -------- SQUARE -------- */
+section #square {
     width: 20em;
     height: 20em;
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+    border-radius: .5em;
+    display: flex;
+    scale: 1;
+    -webkit-transition: .2s;
+    transition: scale .2s;
+    border: 1px solid var(--BackColor2);
 }
-#canvas {
-    height: 16em;
-    width: 16em;
-    border-radius: 1em;
-    border: var(--BackColor2) 1px solid;
-
+#square:hover {
+    scale: 1.05;
 }
-#options {
-    display: none;
-}
-#options.active {
-    display: block;
-}
-#options div {
-    border: var(--BackColor2) 1px solid;
-    padding: 2em;
-    border-radius: 1em;
+#inputDiv {
+    height: 100%;
+    border-radius: .5em;
+    background: var(--GayGradient);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
-#options input[type="number"] {
-    width: 4em;
+#inputDiv h2 {
+    color: var(--BackColor1);
+    position: absolute;
+    font-size: 1.5em;
+    text-align: center;
 }
-#borderSize {
-    display: none;
+#inputDiv h2 span{
+    font-size: .5em;
 }
-#borderSize.active {
-    display: block;
+#fileInput{
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    width: 20em;
+    height: 20em;
+}
+
+#canvas {
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+#square.circle::after {
+    pointer-events: none; 
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #00000030;
+    backdrop-filter: blur(5px);
+    mask-image: url(../src/svg/clipOutCircle.svg);
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+}
+
+
+/* -------- CONTROLS -------- CONTROLS -------- CONTROLS -------- */
+#controls {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--BackColor2);
+    border-radius: .5em;
+    padding: 2em    ;
+}
+select {
+    color: var(--TextColor1);
+    border-radius: .3em;
+    border: none;
+    background-color: var(--BackColor1op7);
+    padding: .3em;
+    -webkit-transition: .2s;
+    transition: background-color .2s;
+}
+select::after{
+  position: absolute;
+  content: "";
+}
+input[type="number"]{
+    background-color: var(--BackColor1op7);
+    border: none;
+    border-radius: .3em;
+    padding: .2em;
+    color: var(--TextColor1);
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-transition: .2s;
+    transition: background-color .2s;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="range"]{
+    -webkit-appearance: none;
+    appearance: none;
+    /*width: 100%;*/ 
+    height: .6em; 
+    border-radius: .5em;
+    margin-bottom: .05em;
+    background: var(--BackColor1);
+    outline: none;
+    opacity: 0.7; 
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: .2em;
+}
+input[type="range"]:hover {
+    opacity: 1;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 1.2em;
+  background: var(--TextColor2);
+  cursor: pointer;
+  border: none;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 1.2em;
+  background: var(--TextColor2);
+  cursor: pointer;
+  border: none;
+}
+select:focus,
+input:focus,
+select:hover,
+input:hover{
+    outline: none;
+    opacity: 1;
+    background-color: var(--BackColor1);
+}
+.toggle {
+    border: 1px solid var(--TextColor2);
+    border-radius: 5em;
+    height : 3em;
+    padding: .5em 0;
+}
+.toggle input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+.toggle span {
+    cursor: default;
+    padding: .5em;
+    margin-left: -0.3em;
+    border-radius: 0;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    background-color: var(--BackColor1op7);
+}
+.toggle span:last-child {
+    /*margin-left: 0;*/
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.toggle span:not(.selectedToggl){
+    background: none;
+    cursor: pointer;
+}
+
+
+
+
+
+@media screen and (min-width: 100vmax) {
+    .wideOnly {
+        display: initial;
+    }
 }

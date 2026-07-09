@@ -1,89 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LGBTfy pfp</title>
+    <title>LGBTfy</title>
     <link rel="stylesheet" href="./src/style.css">
 </head>
+
 <body>
-    <header>
+
+    <header><!--    HEADER          HEADER          HEADER          HEADER  -->
         <div class="logo">
-            <img class="logo" src="./src/logo.png" alt="">
-            <h1><span class="red">L</span><span class="orange">G</span><span class="yellow">B</span><span class="green">T</span><span class="blue">f</span><span class="violet">y</span> pfp</h1>
+            <img id="logoImg" src="./src/svg/logo.svg" alt="">
+            <h1> <span class="red">L</span><span class="orange">G</span><span class="yellow">B</span><span
+                    class="green">T</span><span class="blue">f</span><span class="violet">y</span> pfp</h1>
         </div>
         <div class="credits">
-            <p>By <a href="https://robin888b.github.io/">Raven Spart (Robin888b)</a></p>
-        </div>
-        <div class="creditsPhone">
-            <p>By <a href="https://robin888b.github.io/">Raven Spart</a></p>
+            <p>By <a href="https://spart.ovh/">Raven Spart<span class="wideOnly"> (Robin888b)</span></a></p>
         </div>
     </header>
-    <div class="subheader">
-        <h1>website in creation, most functionalities not yet developed</h1>
-    </div>
-    <div id="content">
-        <div id="subcontent">
-            <div id="uploadDiv">
-                <h1>Chose a picture</h1><br>
-                <div class="inputDiv">
-                    <canvas id="canvas" height="1000" width="1000">votre navigateur ne supporte pas canvas</canvas>
-                    <h1>Drop file here<br><span>Or click to open file</span></h1>
-                    <input type="file" class="file" name="" id="">
-                </div>
-            </div>
-            <div id="options">
-                <h1>Chose options</h1><br>
-                <div>
-                    <p>
-                        Flag :
-                        <select name="" id="flagSelect">
-                            <option value="0">Raimbow</option>
-                            <option value="1">HomoSexual</option>
-                            <option value="2">lesbian</option>
-                            <option value="3">Bisexual</option>
-                            <option value="4">Pansexual</option>
-                            <option value="5">Asexual</option>
-                            <option value="6">Transgender</option>
-                            <option value="7">DemiBoy</option>
-                            <option value="8">DemiGirl</option>
-                            <option value="9">NonBinary</option>
-                        </select><br><br>
-                        mode :
-                        <select name="" id="flagModaSelect">
-                            <option value="0">circle</option>
-                            <option value="1" selected>square</option>
-                            <option value="2">gradient</option>
-                            <option value="3">Dash</option>
-                        </select><br><br>
-                        Rotation :
-                        <input type="range" min="-45" step="15" value="0" max="45" id="rotationRange">
-                        <input type="number" min="-45" value="0" max="45" id="rotationInput">
-                        <br><br>
-                        <br><br>
-                        Image size (px) :
-                        <input type="range" min="100" step="50" value="1000" max="2500" id="sizeRange">
-                        <input type="number" min="100" value="1000" max="2500" id="sizeInput">
-                        <br><br>
-                        Clip mode :
-                        <select id="clipModeSelect">
-                            <option value="0" selected>Transparency</option>
-                            <option value="1">Circle</option>
-                            <option value="2">square</option>
-                            <option value="3">heart</option>
-                        </select>
-                        <p id="borderSize">
-                            <br>
-                            Border size (%) :
-                            <input type="range" min="0" value="10" max="25"  id="borderSizeRange">
-                            <input type="number" min="0"  value="10" max="25" id="borderSizeInput">
-                        </p>
-                    </p>
-                </div>
+
+
+    <section>
+
+        <div id="square"><!--   IMG/INPUT           IMG/INPUT           IMG/INPUT   -->
+            <canvas id="canvas" class="dpNone" height="1000" width="1000">votre navigateur ne supporte pas canvas</canvas>
+            <div id="inputDiv">
+                <h2>Upload a picture<br><span>Drag & Drop or Click here</span></h2>
+                <input type="file" name="fileInput" id="fileInput" accept="image/*">
             </div>
         </div>
-    </div>
+
+
+
+
+        <div id="controls" class="dpNone"><!-- CONTROLS        CONTROLS        CONTROLS    -->
+            <div>
+
+                <p>
+                    Flag :
+                    <select name="" id="flagSelect">
+                        <option value="0" selected>Raimbow</option>
+                        <option value="1">Agender</option>
+                        <option value="2">Aromantic</option>
+                        <option value="3">Asexual</option>
+                        <option value="4">Bear</option>
+                        <option value="5">Bisexual</option>
+                        <option value="6">DemiBoy</option>
+                        <option value="7">DemiGirl</option>
+                        <option value="8">Gay Men</option>
+                        <option value="9">GenderFluid</option>
+                        <option value="10">GenderQueer</option>
+                        <option value="11">Lesbian</option>
+                        <option value="12">NonBinary</option>
+                        <option value="13">Omnisexual</option>
+                        <option value="14">Pansexual</option>
+                        <option value="15">Transgender</option>
+                    </select>
+
+                    <!--
+                    [
+                        "../src/flag/normal/flagClassic.svg",
+                        "../src/flag/normal/flagAgender.svg",
+                        "../src/flag/normal/flagAromantic.svg",
+                        "../src/flag/normal/flagAsexual.svg",
+                        "../src/flag/normal/flagBear.svg",
+                        "../src/flag/normal/flagBi.svg",
+                        "../src/flag/normal/flagDemiBoy.svg",
+                        "../src/flag/normal/flagDemiGirl.svg",
+                        "../src/flag/normal/flagGayMen.svg",
+                        "../src/flag/normal/flagGenderFluid.svg",
+                        "../src/flag/normal/flagGenderQueer.svg",
+                        "../src/flag/normal/flagLesbian.svg",
+                        "../src/flag/normal/flagNonBinary.svg",
+                        "../src/flag/normal/flagOmnisexual.svg",
+                        "../src/flag/normal/flagPan.svg",
+                        "../src/flag/normal/flagTrans.svg"
+                    ]
+                    -->
+
+                    <select name="" id="flagModaSelect">
+                        <option value="0">normal</option>
+                        <option value="2" selected>gradient</option>
+                        <option value="3">Dash</option>
+                    </select><br><br>
+
+                    Output : 
+                    <label for="togglSquare" id="TogglSquareLabel" class="toggle">
+                        <input type="checkbox" name="togglSquare" id="togglSquare">
+                        <span id="dspToglCircle" class="selectedToggl">Circle</span><span id="dspTogglSquare" class="">Square</span>
+                    </label>
+                    <br><br>
+
+                    Rotation :
+                    <input type="range" min="-45" step="15" value="-45" max="45" id="rotationRange">
+                    <input type="number" min="-45" value="-45" max="45" id="rotationInput">
+                    <br><br>
+
+                    Image size (px) :
+                    <input type="range" min="100" step="50" value="1000" max="2500" id="sizeRange">
+                    <input type="number" min="100" value="1000" max="2500" id="sizeInput">
+                    <br><br>
+
+                    Clip mode :
+                    <select id="clipModeSelect">
+                        <option value="0" selected>Transparency</option>
+                        <option value="1">Circle</option>
+                        <option value="2">Blured Circle</option>
+                        <option value="3" id="clipOptionSquare" class="dpNone">square</option>
+                        <option value="4">heart</option>
+                    </select>
+
+                    <p id="brderRadiusControl">
+                        <br>
+                        Border Radius (%)
+                        <input type="range" min="0" value="5" step="1" max="50"  id="borderRadiusRange">
+                        <input type="number" min="0"  value="5" max="50" id="borderRadiusInput">
+                    </p>
+
+                    <p id="borderControl" class="dpNone">
+                    <br>
+                        Border size (%) :
+                        <input type="range" min="0" value="10" max="25"  id="borderSizeRange">
+                        <input type="number" min="0"  value="10" max="25" id="borderSizeInput">
+                    </p>
+                    
+                </p>
+            </div>
+        </div>
+    </section>
+
 </body>
-<script src="./src/img/svg/flagList.js"></script>
 <script src="./src/app.js"></script>
+
 </html>
