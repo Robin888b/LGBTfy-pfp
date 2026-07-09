@@ -588,14 +588,23 @@ async function printFlag(){
 
         } else if (selectFlagType.value == 3){// Dashed
 
-            let rotationInRadians = (flagRotation * Math.PI) / 180;        
-            flagSize = ((canvasSize/2)/Math.cos(Math.abs(rotationInRadians)))*2
-            
-            let flag = await loadImage(flagList[4][selectFlag.value])
-            ctx.drawImage(flag,
-                -(flagSize/2)*4/3, -(flagSize/2)*4/3,
-                flagSize*4/3, flagSize*4/3
-            )
+            if (flagRotation == 0){
+                let flag = await loadImage(flagList[3][selectFlag.value])
+
+                ctx.drawImage(flag,
+                    -(flagSize/2), -(flagSize)/2,
+                    flagSize, flagSize
+                )
+
+            } else {
+                let flag = await loadImage(flagList[4][selectFlag.value])
+
+                flagSize = Math.sqrt((canvasSize**2)+(canvasSize**2))
+                ctx.drawImage(flag,
+                    -(flagSize/2), -(flagSize)/2,
+                    flagSize, flagSize
+                )
+            }
             ctx.restore()
 
             applyCubism(canvasSize/10, [.4, .7], 2);
