@@ -24,9 +24,9 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:zoom="0.36175523"
-     inkscape:cx="-41.4645"
-     inkscape:cy="221.144"
+     inkscape:zoom="1.5452724"
+     inkscape:cx="376.30905"
+     inkscape:cy="487.93986"
      inkscape:window-width="1920"
      inkscape:window-height="1013"
      inkscape:window-x="0"
@@ -41,8 +41,8 @@
      id="layer1">
     <path
        id="rect4"
-       style="fill:#000000;stroke-width:1.32291666;stroke:#000000;stroke-opacity:1;stroke-dasharray:none;fill-opacity:0.1"
+       style="fill:#000000;fill-opacity:0.1;stroke:#808080;stroke-width:2.61317;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        inkscape:label="square"
-       d="M 0 0 L 0 211.66666 L 211.66666 211.66666 L 211.66666 0 L 0 0 z M 105.83333 0.26458333 A 105.56875 105.56875 0 0 1 211.40208 105.83333 A 105.56875 105.56875 0 0 1 105.83333 211.40208 A 105.56875 105.56875 0 0 1 0.26458333 105.83333 A 105.56875 105.56875 0 0 1 105.83333 0.26458333 z " />
+       d="M 1.3065864,1.3065864 V 210.36008 H 210.36008 V 1.3065864 Z M 105.83334,1.5679032 A 104.26543,104.26543 0 0 1 210.09877,105.83334 104.26543,104.26543 0 0 1 105.83334,210.09877 104.26543,104.26543 0 0 1 1.5679032,105.83334 104.26543,104.26543 0 0 1 105.83334,1.5679032 Z" />
   </g>
 </svg>
