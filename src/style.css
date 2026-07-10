@@ -359,15 +359,16 @@ input:hover{
     align-items: center;
 }
 
-#previewSection div {
+#previewDiv {
     z-index: 5;
     padding: 2em;
     border-radius: .5em;
     background-color: var(--BackColor2);
     display: flex;
     flex-direction: column;
-    gap: 1em;
     align-items: center;
+    justify-content: center;
+
 }
 #closePreview {
     z-index: 3;
@@ -384,11 +385,13 @@ input:hover{
 
 #previewPicture {
     border-radius: .3em;
+    aspect-ratio: 1;
+    max-width: 90vmin;
 }
 
-#previewSection div a,
-#previewSection div label,
-#previewSection div button {
+#previewDiv a,
+#previewDiv label,
+#previewDiv button {
     cursor: pointer;
     background-color: var(--BackColor1op7);
     padding: .5em;
@@ -396,17 +399,24 @@ input:hover{
     -webkit-transition: .2s;
     transition: background-color .2s;
     color: var(--TextColor1);
+    margin-top: 1em;
 }
-#previewSection div a:hover,
-#previewSection div label:hover,
-#previewSection div button:hover {
+#previewDiv a:hover,
+#previewDiv label:hover,
+#previewDiv button:hover {
     text-decoration: none;
     background-color: var(--BackColor1);
 }
-#previewSection div input {
+#previewDiv input {
     opacity: 0;
     width: 0;
     height: 0;
+}
+#previewDiv div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 
@@ -429,5 +439,9 @@ input:hover{
         max-width: none;
         min-height: calc(70svh - 20em);
         max-height: calc(100svh - 20em);
+    }
+
+    #previewPicture {
+        max-width: 60svh;
     }
 }
