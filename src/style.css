@@ -10,7 +10,7 @@ input, button, textarea, select{font: inherit;}
     html:focus-within {scroll-behavior: auto;}
     *, *::before, *::after {animation-duration: 0.01ms !important;animation-iteration-count: 1 !important;transition-duration: 0.01ms !important;scroll-behavior: auto !important;transition: none;}
 }
-body, html{ height: 100%; width: 100%; top: 0; }
+body, html{ height: 100%; width: 100%; top: 0; max-height: 100svh; }
 
 
 
@@ -92,7 +92,7 @@ section {
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 2em;
+    padding: 2em 0 0 0;
     flex-grow: 2;
     gap: 2em;
 }
@@ -168,6 +168,7 @@ section #square {
     background-color: var(--BackColor2);
     border-radius: .5em;
     padding: 2em    ;
+    font-size: .7em;
 }
 select {
     color: var(--TextColor1);
@@ -290,6 +291,7 @@ input:hover{
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
+    
 }
 #cropWindows {
     padding: 2em;
@@ -307,8 +309,8 @@ input:hover{
     flex-grow: 2;
 }
 #cropCanvas {
-    background-color: var(--BackColor1);
-    aspect-ratio: 1;
+    background-color: var(--BackColor1);/*
+    aspect-ratio: 1;*/
     min-width: 60svw;
     border-radius: .3em;
     cursor: move;
@@ -337,6 +339,10 @@ input:hover{
 @media screen and (min-width: 100vmax) {
     .wideOnly {
         display: initial;
+    }
+
+    section {
+        padding: 2em
     }
 
     #cropCanvas{

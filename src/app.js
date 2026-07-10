@@ -2,6 +2,7 @@ console.log("Hello world!")
 
 let file;
 let img = new Image();
+let tmpImg = new Image();
 let imgUrl = ""; // the top calc in base64
 const fileInput = document.getElementById("fileInput");
 const divFileInput = document.getElementById("inputDiv")
@@ -26,18 +27,18 @@ fileInput.addEventListener("input", e => {
 fileInput.addEventListener("drop", (event)=> {
     event.preventDefault()
     const file_ = event.dataTransfer.files[0]
-    img.src = URL.createObjectURL(file_);
+    tmpImg.src = URL.createObjectURL(file_);
     file = URL.createObjectURL(file_)
-    img.onload = () => {
+    tmpImg.onload = () => {
         cropLoad()
         //firstLoad()
     }
 })
 fileInput.addEventListener("change", (event)=> {
     const file_ = fileInput.files[0]
-    img.src = URL.createObjectURL(file_);
+    tmpImg.src = URL.createObjectURL(file_);
     file = URL.createObjectURL(file_)
-    img.onload = () => {
+    tmpImg.onload = () => {
         cropLoad()
         //firstLoad()
     }
@@ -630,7 +631,6 @@ async function printFlag(){
 //  LOAD        LOAD        LOAD        LOAD        LOAD        LOAD        LOAD
 async function load(){
     isChangingValue = true;
-    console.clear()
     console.log("load()");
     ctx.canvas.height = canvasSize
     ctx.canvas.width = canvasSize
