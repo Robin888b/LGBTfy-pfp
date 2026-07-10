@@ -6,6 +6,9 @@ let tmpImg = new Image();
 let imgUrl = ""; // the top calc in base64
 const fileInput = document.getElementById("fileInput");
 const divFileInput = document.getElementById("inputDiv")
+const previewUploadNew = document.getElementById("previewUploadNew")
+const cropSection = document.getElementById("cropSection");
+const previewSection = document.getElementById("previewSection");
 
 
 // canvas
@@ -18,32 +21,39 @@ let canvasSize = 1000
 
 
 
-fileInput.addEventListener("input", e => {
-    console.log(e.target.files[0])
-    console.log(fileInput.files)
-})
-
  // Drop File
-fileInput.addEventListener("drop", (event)=> {
-    event.preventDefault()
-    const file_ = event.dataTransfer.files[0]
-    tmpImg.src = URL.createObjectURL(file_);
-    file = URL.createObjectURL(file_)
-    tmpImg.onload = () => {
-        cropLoad()
-        //firstLoad()
-    }
-})
-fileInput.addEventListener("change", (event)=> {
-    const file_ = fileInput.files[0]
-    tmpImg.src = URL.createObjectURL(file_);
-    file = URL.createObjectURL(file_)
-    tmpImg.onload = () => {
-        cropLoad()
-        //firstLoad()
-    }
-})
+function handleNewFile(file_) {
+    if (!file_) return;
 
+    if (tmpImg && tmpImg.src) URL.revokeObjectURL(tmpImg.src);
+    if (file) URL.revokeObjectURL(file);
+
+    const newUrl = URL.createObjectURL(file_);
+    tmpImg.src = newUrl;
+    file = newUrl;
+
+    tmpImg.onload = () => {
+        cropLoad();
+    };
+}
+
+fileInput.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const file_ = event.dataTransfer.files[0];
+    handleNewFile(file_);
+});
+
+fileInput.addEventListener("change", (event) => {
+    const file_ = fileInput.files[0];
+    handleNewFile(file_);
+});
+
+previewUploadNew.addEventListener("input", (event)=> {
+    previewSection.classList.add("dpNone");
+    const file_ = event.target.files[0];
+    handleNewFile(file_);
+    event.target.value = ""
+})
 
 
 
@@ -70,7 +80,6 @@ const rangeBorderRadius = document.getElementById("borderRadiusRange");
 const divBorderRadius = document.getElementById("brderRadiusControl");
 const divSquare = document.getElementById("square");
 
-const cropSection = document.getElementById("cropSection")
 
 
 if (selectShape.value == 0){
@@ -634,4 +643,42 @@ async function rePrintFlag(){
         0,0, canvasSize, canvasSize
     )
     isChangingValue = false
+}
+
+
+
+
+
+
+let previewImgBlob;
+canvas.onclick = e => {
+    e.preventDefault();
+    previewSection.classList.remove("dpNone")
+
+    canvas.toBlob((blob) => {
+        const previewImg = document.getElementById("previewPicture")
+        const url = URL.createObjectURL(blob);
+
+        previewImg.src = url;
+        previewImgBlob = blob;
+        document.getElementById("previewDownload").href = url;
+    });
+}
+
+document.getElementById("closePreview").onclick = e => {
+    console.log("click !!!");
+    
+    previewSection.classList.add("dpNone")
+}
+
+document.getElementById("previewCopy").onclick = e => {
+    try {
+        navigator.clipboard.write([
+            new ClipboardItem({
+                'image/png': previewImgBlob
+            })
+        ]);
+    } catch (error) {
+        console.error(error);
+    }
 }

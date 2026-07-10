@@ -280,6 +280,8 @@ input:hover{
 
 
 
+
+/*  CROP      CROP        CROP        CROP        CROP    */
 #cropSection {
     background-color: var(--BackColor1op7);
     position: fixed;
@@ -334,6 +336,83 @@ input:hover{
     align-items: center;
     justify-content: center;
 }
+
+
+
+
+
+
+
+
+/*  PREVIEW         PREVIEW         PREVIEW         PREVIEW */
+#previewSection {
+    /*background-color: var(--BackColor1op7);*/
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#previewSection div {
+    z-index: 5;
+    padding: 2em;
+    border-radius: .5em;
+    background-color: var(--BackColor2);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}
+#closePreview {
+    z-index: 3;
+    position: fixed;
+    content: "";
+    background-color: var(--BackColor1op7);
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+#previewPicture {
+    border-radius: .3em;
+}
+
+#previewSection div a,
+#previewSection div label,
+#previewSection div button {
+    cursor: pointer;
+    background-color: var(--BackColor1op7);
+    padding: .5em;
+    border-radius: .3em;
+    -webkit-transition: .2s;
+    transition: background-color .2s;
+    color: var(--TextColor1);
+}
+#previewSection div a:hover,
+#previewSection div label:hover,
+#previewSection div button:hover {
+    text-decoration: none;
+    background-color: var(--BackColor1);
+}
+#previewSection div input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+
+
+
 
 
 @media screen and (min-width: 100vmax) {

@@ -61,6 +61,7 @@ function inptZoom(){
 
 let isDragging = false;
 let startX = 0, startY = 0;
+let initialTouchDistance = 0;
 function mouseDown(clientX, clientY){
     startX = parseInt((clientX-cropCanvas.offsetLeft)*cropCanvas.width/cropCanvas.offsetWidth)
     startY = parseInt((clientY-cropCanvas.offsetTop)*cropCanvas.height/cropCanvas.offsetHeight)
@@ -74,10 +75,16 @@ cropCanvas.onmousedown = event => {
     event.preventDefault();
     mouseDown(event.clientX, event.clientY)
 }
-cropCanvas.ontouchstart = event => {
-    event.preventDefault();
-    mouseDown(event.touches[0]["pageX"], event.touches[0]["pageY"])
-
+cropCanvas.ontouchstart = event => {event.preventDefault();
+    if (event.touches.length === 2) { // Two fingers
+        isDragging = false;
+        
+        let dx = event.touches[0].pageX - event.touches[1].pageX;
+        let dy = event.touches[0].pageY - event.touches[1].pageY;
+        initialTouchDistance = Math.sqrt(dx**2 + dy**2);
+    } else if (event.touches.length === 1) {
+        mouseDown(event.touches[0]["pageX"], event.touches[0]["pageY"]);
+    }
 }
 
 
@@ -139,7 +146,23 @@ document.onmousemove = event => {
     mouseMove(event.clientX, event.clientY)
 }
 document.ontouchmove = event => {
-    mouseMove(event.touches[0]["pageX"],event.touches[0]["pageY"])
+    if (event.touches.length === 2) {
+        event.preventDefault();
+        
+        let dx = event.touches[0].pageX - event.touches[1].pageX;
+        let dy = event.touches[0].pageY - event.touches[1].pageY;
+        let currentDistance = Math.sqrt(dx * dx + dy * dy);
+        
+        let distanceDiff = currentDistance - initialTouchDistance;
+        
+        if (Math.abs(distanceDiff) > 1) {
+            mouseScrool(distanceDiff * 1.5);
+            initialTouchDistance = currentDistance;
+        }
+    } else if (event.touches.length === 1) {
+        event.preventDefault();
+        mouseMove(event.touches[0]["pageX"], event.touches[0]["pageY"]);
+    }
 }
 
 
