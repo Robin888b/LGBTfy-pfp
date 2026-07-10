@@ -519,102 +519,67 @@ async function printFlag(){
 
     let flagSize = canvasSize;
     if (isSquare) {
-        if (selectFlagType.value <2) {// Normal
+        let prFlag = function(flag){
 
             let rotationInRadians = (flagRotation * Math.PI) / 180;        
             flagSize = ((canvasSize/2)/Math.cos(Math.abs(rotationInRadians)))*2
-            
-            let flag = await loadImage(flagList[1][selectFlag.value])
             ctx.drawImage(flag,
                 -(flagSize/2)*4/3, -(flagSize/2)*4/3,
                 flagSize*4/3, flagSize*4/3
             )
+
+        }
+
+        if (selectFlagType.value <2) {// Normal
+            
+            prFlag(await loadImage(flagList[1][selectFlag.value]));
 
         } else if (selectFlagType.value == 2) {// gradient
-
-            let rotationInRadians = (flagRotation * Math.PI) / 180;        
-            flagSize = ((canvasSize/2)/Math.cos(Math.abs(rotationInRadians)))*2
             
-            let flag = await loadImage(flagList[4][selectFlag.value])
-            ctx.drawImage(flag,
-                -(flagSize/2)*4/3, -(flagSize/2)*4/3,
-                flagSize*4/3, flagSize*4/3
-            )
+            prFlag(await loadImage(flagList[4][selectFlag.value]));
 
         } else if (selectFlagType.value == 3){// Dashed
-
-            let rotationInRadians = (flagRotation * Math.PI) / 180;        
-            flagSize = ((canvasSize/2)/Math.cos(Math.abs(rotationInRadians)))*2
             
-            let flag = await loadImage(flagList[4][selectFlag.value])
-            ctx.drawImage(flag,
-                -(flagSize/2)*4/3, -(flagSize/2)*4/3,
-                flagSize*4/3, flagSize*4/3
-            )
-            ctx.restore()
+            prFlag(await loadImage(flagList[4][selectFlag.value]));
+
+            ctx.restore();
 
             applyCubism(canvasSize/10, [.4, .7], 2);
         }
 
     } else { // if CIRCLE
+        let prFlag = function(flag){
+
+            ctx.drawImage(flag,
+                -(flagSize/2), -(flagSize)/2,
+                flagSize, flagSize
+            )
+        }
 
         if (selectFlagType.value <2){// Normal
 
             if (flagRotation == 0){
-                let flag = await loadImage(flagList[0][selectFlag.value])
-
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
-
+                prFlag(await loadImage(flagList[0][selectFlag.value]))
             } else {
-                let flag = await loadImage(flagList[1][selectFlag.value])
-
                 flagSize = Math.sqrt((canvasSize**2)+(canvasSize**2))
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
+                prFlag(await loadImage(flagList[1][selectFlag.value]))
             }
 
         }  else if (selectFlagType.value == 2) {// gradient
             if (flagRotation == 0){
-                let flag = await loadImage(flagList[3][selectFlag.value])
-
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
-
+                prFlag(await loadImage(flagList[3][selectFlag.value]))
             } else {
-                let flag = await loadImage(flagList[4][selectFlag.value])
-
                 flagSize = Math.sqrt((canvasSize**2)+(canvasSize**2))
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
+                prFlag(await loadImage(flagList[4][selectFlag.value]))
             }
 
         } else if (selectFlagType.value == 3){// Dashed
 
             if (flagRotation == 0){
-                let flag = await loadImage(flagList[3][selectFlag.value])
-
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
-
+                prFlag(await loadImage(flagList[3][selectFlag.value]))
             } else {
-                let flag = await loadImage(flagList[4][selectFlag.value])
-
                 flagSize = Math.sqrt((canvasSize**2)+(canvasSize**2))
-                ctx.drawImage(flag,
-                    -(flagSize/2), -(flagSize)/2,
-                    flagSize, flagSize
-                )
+                prFlag(await loadImage(flagList[4][selectFlag.value]))
             }
             ctx.restore()
 
